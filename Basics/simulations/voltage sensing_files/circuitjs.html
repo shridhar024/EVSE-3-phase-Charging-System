@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://www.falstad.com/circuit/circuitjs.html?startCircuit=lrc.txt -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <link rel="manifest" href="https://www.falstad.com/circuit/manifest.json">
+  
+    <!-- Properties can be specified to influence deferred binding -->
+    <meta name="gwt:property" content="locale=en_UK">
+    
+    
+    <!-- Titles are optional, but useful -->
+    <title>Blank Circuit - Circuit Simulator</title>
+
+<style>
+.disabled {
+	color: lightgray
+}
+.topSpace {
+	margin-top: 12px;
+}
+.cursorPointer {
+   cursor: default;
+}
+.cursorCross {
+   cursor: crosshair;
+}
+
+.cursorSplitter {
+   cursor: row-resize;
+}
+
+.gwt-MenuItem-disabled {
+	color: lightgray;
+}
+.offScreen {
+	position: absolute;
+	right: 101%;
+	overflow: hidden;
+}
+.gwt-Frame{
+	scrolling="no";
+	border: 0px !important;
+}
+
+.gwt-MenuItem {
+	font-size: 12px !important;
+}
+
+.gwt-MenuBar-horizontal {
+	font-size: 12px !important;
+	}
+	
+.gwt-Label-selected {
+	font-size: 1.3em;
+	font-weight: 700;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+.gwt-Label-1off {
+	color: DarkGray;
+}
+
+.gwt-Label-2off {
+	font-size:0.8em;
+	color: LightGray;
+}
+
+.gwt-Label-current {
+}
+
+.gwt-Button.chbut {
+	padding:3px;
+	margin: 3px;
+}
+
+.gwt-Button.chbut.chsel {
+	font-weight: bold;
+}
+
+.gwt-Button.chbut-black {
+	background: black;
+	color: white;
+}
+
+.gwt-Button.chbut-white {
+	background: white;
+	color: black;
+}
+
+.gwt-TextBox.scalebox {
+	width: 100px;
+}
+
+.gwt-Button.expand-but {
+	line-height: 0;
+	font-size: 13px;
+	margin-right: 5px;
+	border-radius:0px;
+	display: inline-block;
+	text-align: center;
+	width: 15px;
+	height: 15px;
+	padding-left: 0;
+	padding-right: 0;
+	padding-bottom:1px;
+	padding-top:0;
+	margin-bottom:1px;
+	background:gray;
+	color:white;
+}
+
+
+.topButton-red {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left:5px;
+    padding: 5px 7px;
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+    cursor: hand;
+    font-size: small;
+    background-color: #ff0000; 
+    border: 1px solid #bbb;
+    border-bottom: 1px solid #a0a0a0;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+.topButton {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left:5px;
+    padding: 5px 7px;
+    text-decoration: none;
+    cursor: pointer;
+    cursor: hand;
+    font-size: small;
+    background-color: #e7e7e7; 
+    border: 1px solid #bbb;
+    border-bottom: 1px solid #a0a0a0;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+.radioPanel label {
+	margin-right: 15px;
+}
+
+</style>
+
+<link rel="stylesheet" href="./fontello.css">
+
+<style type="text/css">  @-webkit-keyframes rotate {
+    from  { -webkit-transform: rotate(0deg); }
+    to   { -webkit-transform: rotate(360deg); }
+  }
+
+  @keyframes rotate {
+    from  { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+    .dropbox-dropin-btn, .dropbox-dropin-btn:link, .dropbox-dropin-btn:hover {
+      display: inline-block;
+      height: 14px;
+      font-family: "Lucida Grande", "Segoe UI", "Tahoma", "Helvetica Neue", "Helvetica", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: #636363;
+      text-decoration: none;
+      padding: 1px 7px 5px 3px;
+      border: 1px solid #ebebeb;
+      border-radius: 2px;
+      border-bottom-color: #d4d4d4;
+        background: #fcfcfc;
+  background: -moz-linear-gradient(top, #fcfcfc 0%, #f5f5f5 100%);
+  background: -webkit-linear-gradient(top, #fcfcfc 0%, #f5f5f5 100%);
+  background: linear-gradient(to bottom, #fcfcfc 0%, #f5f5f5 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f5f5f5',GradientType=0);  
+    }
+
+    .dropbox-dropin-default:hover, .dropbox-dropin-error:hover {
+      border-color: #dedede;
+      border-bottom-color: #cacaca;
+        background: #fdfdfd;
+  background: -moz-linear-gradient(top, #fdfdfd 0%, #f5f5f5 100%);
+  background: -webkit-linear-gradient(top, #fdfdfd 0%, #f5f5f5 100%);
+  background: linear-gradient(to bottom, #fdfdfd 0%, #f5f5f5 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdfdfd', endColorstr='#f5f5f5',GradientType=0);  
+    }
+
+    .dropbox-dropin-default:active, .dropbox-dropin-error:active {
+      border-color: #d1d1d1;
+      box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+    }
+
+    .dropbox-dropin-btn .dropin-btn-status {
+      display: inline-block;
+      width: 15px;
+      height: 14px;
+      vertical-align: bottom;
+      margin: 0 5px 0 2px;
+      background: transparent url('https://www.dropbox.com/static/metaserver/static/images/widgets/dbx-saver-status.png') no-repeat;
+      position: relative;
+      top: 2px;
+    }
+
+    .dropbox-dropin-default .dropin-btn-status {
+      background-position: 0px 0px;
+    }
+
+    .dropbox-dropin-progress .dropin-btn-status {
+      width: 18px;
+      margin: 0 4px 0 0;
+      background: url('https://www.dropbox.com/static/metaserver/static/images/widgets/dbx-progress.png') no-repeat center center;
+        -webkit-animation-name: rotate;
+        -webkit-animation-duration: 1.7s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+      animation-name: rotate;
+      animation-duration: 1.7s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    .dropbox-dropin-success .dropin-btn-status {
+      background-position: -15px 0px;
+    }
+
+    .dropbox-dropin-disabled {
+      background: #e0e0e0;
+      border: 1px #dadada solid;
+      border-bottom: 1px solid #ccc;
+      box-shadow: none;
+    }
+
+    .dropbox-dropin-disabled .dropin-btn-status {
+      background-position: -30px 0px;
+    }
+
+    .dropbox-dropin-error .dropin-btn-status {
+      background-position: -45px 0px;
+    }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.4) {
+      .dropbox-dropin-btn .dropin-btn-status {
+        background-image: url('https://www.dropbox.com/static/metaserver/static/images/widgets/dbx-saver-status-2x.png');
+        background-size: 60px 14px;
+          -webkit-background-size: 60px 14px;
+      }
+
+      .dropbox-dropin-progress .dropin-btn-status {
+        background: url('https://www.dropbox.com/static/metaserver/static/images/widgets/dbx-progress-2x.png') no-repeat center center;
+        background-size: 20px 20px;
+          -webkit-background-size: 20px 20px;
+      }
+  }
+
+    .dropbox-saver:hover, .dropbox-chooser:hover {
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .dropbox-chooser, .dropbox-dropin-btn {
+      line-height: 11px !important;
+      text-decoration: none !important;
+      box-sizing: content-box !important;
+        -webkit-box-sizing: content-box !important;
+        -moz-box-sizing: content-box !important;
+    }
+    </style><link rel="stylesheet" href="./clean.css"><link rel="stylesheet" href="./style.css"><meta name="viewport" content="width=device-width"></head>
+  <body>
+  <!-- Include the next line to allow support for dropbox import/export. You will need your own app key. -->
+  <script type="text/javascript" src="./dropins.js.download" id="dropboxjs" data-app-key="ckfvh1twq97lcgc"></script>
+
+  <script language="javascript" src="./lz-string.min.js.download"></script>
+   
+    <!-- This script tag is what actually loads the GWT module.  The -->
+    <!-- 'nocache.js' file (also called a "selection script") is     -->
+    <!-- produced by the GWT compiler in the module output directory -->
+    <!-- or generated automatically in development mode.             -->
+    <script language="javascript" src="./circuitjs1.nocache.js.download"></script>
+    
+    <!-- Include a history iframe to enable full GWT history support -->
+    <!-- (the id must be exactly as shown)                           -->
+    <iframe src="javascript:&#39;&#39;" id="__gwt_historyFrame" style="width:0;height:0;border:0" src="./saved_resource.html"></iframe>
+    
+    <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/circuit/service-worker.js', { scope: '/circuit/' }).then(registration => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        }).catch(error => {
+          console.error('Service Worker registration failed:', error);
+        });
+      });
+    }
+    </script>
+
+  <script defer="" src="./v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;83982c3ea5ad4a4c95971f7a705ac6cb&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+ 
+<iframe id="circuitjs1" tabindex="-1" style="position: absolute; width: 0px; height: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; left: -1000px; top: -1000px;" src="./saved_resource(1).html"></iframe><div aria-hidden="true" style="position: absolute; z-index: -32767; top: -20cm; width: 10cm; height: 10cm; visibility: hidden;">&nbsp;</div><div style="position: absolute; inset: 0px;"><div aria-hidden="true" style="position: absolute; z-index: -32767; top: -20ex; width: 10em; height: 10ex; visibility: hidden;">&nbsp;</div><div style="position: absolute; overflow: hidden; inset: 0px;"><div style="position: absolute; inset: 0px;"><div aria-hidden="true" style="position: absolute; z-index: -32767; top: -20ex; width: 10em; height: 10ex; visibility: hidden;">&nbsp;</div><input type="checkbox" value="on" id="toptrigger" class="toptrigger"><label class="toptriggerlabel" for="toptrigger"></label><div style="position: absolute; overflow: hidden; left: 0px; top: 0px; right: 0px; height: 30px;"><div tabindex="0" role="menubar" class="gwt-MenuBar gwt-MenuBar-horizontal" hidefocus="true" aria-activedescendant="gwt-uid-17" style="outline: 0px; position: absolute; inset: 0px;"><table onclick="document.getElementsByClassName(&#39;toptrigger&#39;)[0].checked = false"><tbody><tr><td class="gwt-MenuItem" id="gwt-uid-17" role="menuitem" aria-haspopup="true">File</td><td class="gwt-MenuItem" id="gwt-uid-33" role="menuitem" aria-haspopup="true">Edit</td><td class="gwt-MenuItem" id="gwt-uid-34" role="menuitem" aria-haspopup="true">Draw</td><td class="gwt-MenuItem" id="gwt-uid-39" role="menuitem" aria-haspopup="true">Scopes</td><td class="gwt-MenuItem" id="gwt-uid-40" role="menuitem" aria-haspopup="true">Options</td><td class="gwt-MenuItem" id="gwt-uid-58" role="menuitem" aria-haspopup="true">Tools</td><td class="gwt-MenuItem" id="gwt-uid-402" role="menuitem" aria-haspopup="true">Circuits</td></tr></tbody></table><input type="text" tabindex="-1" aria-hidden="true" style="opacity: 0; height: 1px; width: 1px; z-index: -1; overflow: hidden; position: absolute;"></div></div><input type="checkbox" value="on" id="trigger" class="trigger"><label class="triggerLabel" for="trigger"></label><div style="position: absolute; overflow: hidden; top: 30px; right: 0px; bottom: 0px; width: 160px;"><table cellspacing="0" cellpadding="0" class="verticalPanel" id="painel" style="position: absolute; inset: 0px;"><tbody><tr><td align="left" style="vertical-align: top;"><table cellspacing="0" cellpadding="0"><tbody><tr><td align="left" style="vertical-align: top;"><button type="button" class="topButton">Reset</button></td></tr><tr><td align="left" style="vertical-align: top;"><button type="button" class="topButton"><strong>RUN</strong>&nbsp;/&nbsp;Stop</button></td></tr></tbody></table></td></tr><tr><td align="left" style="vertical-align: top;"><input type="file" class="gwt-FileUpload offScreen" name="Import" id="LoadFileElement"></td></tr><tr><td align="left" style="vertical-align: top;"><div class="gwt-Label topSpace">Simulation Speed</div></td></tr><tr><td align="left" style="vertical-align: top;"><table cellspacing="0" cellpadding="0"><tbody><tr><td align="left" style="vertical-align: top;"><canvas width="160" height="14" tabindex="0"></canvas></td></tr></tbody></table></td></tr><tr><td align="left" style="vertical-align: top;"><div class="gwt-Label topSpace">Current Speed</div></td></tr><tr><td align="left" style="vertical-align: top;"><table cellspacing="0" cellpadding="0"><tbody><tr><td align="left" style="vertical-align: top;"><canvas width="160" height="14" tabindex="0"></canvas></td></tr></tbody></table></td></tr><tr><td align="left" style="vertical-align: top;"><div class="gwt-Label topSpace disabled">Power Brightness</div></td></tr><tr><td align="left" style="vertical-align: top;"><table cellspacing="0" cellpadding="0"><tbody><tr><td align="left" style="vertical-align: top;"><canvas width="160" height="14" tabindex="0"></canvas></td></tr></tbody></table></td></tr><tr><td align="left" style="vertical-align: top;"><div class="gwt-Label topSpace">Current Circuit:</div></td></tr><tr><td align="left" style="vertical-align: top;"><div class="gwt-Label">Blank Circuit</div></td></tr><tr><td align="left" style="vertical-align: top;"><iframe class="gwt-Frame" src="./iframe.html" scrolling="no" style="width: 160px; height: 273px;"></iframe></td></tr></tbody></table></div><div style="position: absolute; overflow: hidden; display: none; inset: 0px;"><div style="padding: 2px; background-color: rgb(248, 248, 248); border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204); display: flex; align-items: center; position: absolute; inset: 0px;"><div class="gwt-Label cirjsicon-ccw" title="Undo" style="font-size: 24px; color: rgb(51, 51, 51); padding: 1px; margin-right: 5px; cursor: pointer;"></div><div class="gwt-Label cirjsicon-cw" title="Redo" style="font-size: 24px; color: rgb(51, 51, 51); padding: 1px; margin-right: 5px; cursor: pointer;"></div><div class="gwt-Label cirjsicon-scissors" title="Cut" style="font-size: 24px; color: rgb(51, 51, 51); padding: 1px; margin-right: 5px; cursor: pointer;"></div><div class="gwt-Label cirjsicon-copy" title="Copy" style="font-size: 24px; color: rgb(51, 51, 51); padding: 1px; margin-right: 5px; cursor: pointer;"></div><div class="gwt-Label cirjsicon-paste" title="Paste" style="font-size: 24px; color: rgb(51, 51, 51); padding: 1px; margin-right: 5px; cursor: pointer;"></div><div class="gwt-Label cirjsicon-clone" title="Duplicate" style="font-size: 24px; color: rgb(51, 51, 51); padding: 1px; margin-right: 5px; cursor: pointer;"></div><div class="gwt-Label cirjsicon-search" title="Find Component..." style="font-size: 24px; color: rgb(51, 51, 51); padding: 1px; margin-right: 5px; cursor: pointer;"></div><div class="gwt-Label cirjsicon-zoom-11" title="Zoom 100%" style="font-size: 24px; color: rgb(51, 51, 51); padding: 1px; margin-right: 5px; cursor: pointer;"></div><div class="gwt-Label cirjsicon-zoom-in" title="Zoom In" style="font-size: 24px; color: rgb(51, 51, 51); padding: 1px; margin-right: 5px; cursor: pointer;"></div><div class="gwt-Label cirjsicon-zoom-out" title="Zoom Out" style="font-size: 24px; color: rgb(51, 51, 51); padding: 1px; margin-right: 5px; cursor: pointer;"></div><div class="gwt-Label" title="Add Wire" style="font-size: 24px; color: rgb(0, 123, 255); padding: 5px 1px 1px; margin-right: 5px; cursor: pointer; background-color: rgb(230, 247, 255);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><g transform="scale(1.0)"><g transform="scale(0.208) translate(7.5, 32)"><line x1="5" y1="45" x2="95" y2="5" stroke="currentColor" stroke-width="8"></line> <circle cx="5" cy="45" r="10" fill="currentColor"></circle><circle cx="95" cy="5" r="10" fill="currentColor"></circle> </g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Resistor" style="font-size: 24px; color: rgb(51, 51, 51); padding: 5px 1px 1px; margin-right: 5px; cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><g transform="scale(1.0)"> <g transform="scale(.5,.5) translate(-544,-297)"><path stroke="#000000" d=" M 544 320 L 552 320" stroke-width="3"></path><path stroke="#000000" d=" M 584 320 L 592 320" stroke-width="3"></path><g transform="matrix(1,0,0,1,552,320)"><path fill="none" stroke="currentColor" d=" M 0 0 L 2 6 L 6 -6 L 10 6 L 14 -6 L 18 6 L 22 -6 L 26 6 L 30 -6 L 32 0" stroke-width="2"></path> </g> </g> &lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Ground" style="font-size: 24px; color: rgb(51, 51, 51); padding: 5px 1px 1px; margin-right: 5px; cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><g transform="scale(1.0)"><defs></defs><g transform="scale(.6) translate(-826.46,-231.31) scale(1.230769)"><path fill="none" stroke="currentColor" d=" M 688 192 L 688 208" stroke-linecap="round" stroke-width="3"></path> <path fill="none" stroke="currentColor" d=" M 698 208 L 678 208" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 694 213 L 682 213" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 690 218 L 686 218" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 691 192 A 3 3 0 1 1 690.9997392252899 191.96044522459943 Z"></path> </g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Capacitor" style="font-size: 24px; color: rgb(51, 51, 51); padding: 5px 1px 1px; margin-right: 5px; cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><g transform="scale(1.0)"><defs></defs><g transform="translate(-323.76,-71.18) scale(0.470588)"><path fill="none" stroke="currentColor" d=" M 688 176 L 708 176" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 708 164 L 708 188" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 736 176 L 716 176" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 716 164 L 716 188" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 691 176 A 3 3 0 1 1 690.9997392252899 175.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 739 176 A 3 3 0 1 1 738.9997392252899 175.96044522459943 Z"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Inductor" style="font-size: 24px; color: rgb(51, 51, 51); padding: 5px 1px 1px; margin-right: 5px; cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><g transform="scale(1.0)"><g transform="translate(-101.59,-58.18) scale(0.405680)"><path fill="none" stroke="currentColor" d=" M 256 176 L 264 176" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 296 176 L 304 176" stroke-linecap="round" stroke-width="3"></path><g transform="matrix(1,0,0,1,264,176) scale(1,1)"><path fill="none" stroke="currentColor" d=" M 0 0 L 0 6.53144959545255e-16 A 5.333333333333333 5.333333333333333 0 0 1 10.666666666666666 0 L 10.666666666666666 0" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 10.666666666666666 0 L 10.666666666666668 6.53144959545255e-16 A 5.333333333333333 5.333333333333333 0 0 1 21.333333333333332 0 L 21.333333333333332 0" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 21.333333333333332 0 L 21.333333333333336 6.53144959545255e-16 A 5.333333333333333 5.333333333333333 0 0 1 32 0 L 32 0" stroke-linecap="round" stroke-width="3"></path></g><path fill="currentColor" stroke="currentColor" d=" M 259 176 A 3 3 0 1 1 258.99973922528994 175.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 307 176 A 3 3 0 1 1 306.99973922528994 175.96044522459943 Z"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Diode" style="font-size: 24px; color: rgb(51, 51, 51); padding: 5px 1px 1px; margin-right: 5px; cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><g transform="scale(1.0)"><defs></defs><g transform="translate(-323.76,-72.06) scale(0.470588)"><path fill="none" stroke="currentColor" d=" M 688 176 L 704 176" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 720 176 L 736 176" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 704 168 L 704 184 L 720 176 Z"></path><path fill="none" stroke="currentColor" d=" M 720 168 L 720 184" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 691 176 A 3 3 0 1 1 690.9997392252899 175.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 739 176 A 3 3 0 1 1 738.9997392252899 175.96044522459943 Z"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Voltage Source (2-terminal)" style="font-size: 24px; color: rgb(51, 51, 51); padding: 5px 1px 1px; margin-right: 5px; cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><g transform="scale(1.0)"><defs></defs><g transform="scale(.8) translate(-122.00,-53.00) scale(0.500000)"><path fill="none" stroke="currentColor" d=" M 272 160 L 272 140" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 132 L 272 112" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 262 140 L 282 140" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 256 132 L 288 132" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 275 160 A 3 3 0 1 1 274.99973922528994 159.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 275 112 A 3 3 0 1 1 274.99973922528994 111.96044522459944 Z"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Voltage Source (1-terminal)" style="font-size: 24px; color: rgb(51, 51, 51); padding: 5px 1px 1px; margin-right: 5px; cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><g transform="scale(1.0)"><g><text style="user-select: none;" fill="currentColor" stroke="none" font-family="sans-serif" font-size="10px" font-style="normal" font-weight="normal" text-decoration="normal" x="2" y="11" text-anchor="start" dominant-baseline="central">+5V</text></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Switch" style="font-size: 24px; color: rgb(51, 51, 51); padding: 5px 1px 1px; margin-right: 5px; cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><g transform="scale(1.0)"><defs></defs><g transform="translate(55.79,-100.42) scale(0.421053)"><path fill="none" stroke="currentColor" d=" M -128 272 L -120 272" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M -88 272 L -80 272" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M -120 272 L -88 256" stroke-linecap="round" stroke-width="3"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Op Amp (ideal, - on top)" style="font-size: 24px; color: rgb(51, 51, 51); padding: 5px 1px 1px; margin-right: 5px; cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><g transform="scale(1.0)"><g transform="translate(-169.33,-86.13) scale(0.266667)"><path fill="none" stroke="currentColor" d=" M 640 352 L 654 352" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 640 384 L 654 384" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 706 368 L 720 368" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 654 336 L 654 400 L 706 368 Z" stroke-linecap="round" stroke-width="3"></path><g><text fill="currentColor" stroke="currentColor" font-family="sans-serif" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="664" y="350" text-anchor="middle" dominant-baseline="central">-</text></g><g><text fill="currentColor" stroke="currentColor" font-family="sans-serif" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="664" y="384" text-anchor="middle" dominant-baseline="central">+</text></g></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Transistor (bipolar, NPN)" style="font-size: 24px; color: rgb(51, 51, 51); padding: 5px 1px 1px; margin-right: 5px; cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><g transform="scale(1.0)"><defs></defs><g transform="translate(-107.73,-90.40) scale(0.533333)"><path fill="none" stroke="currentColor" d=" M 240 176 L 227 186" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 240 208 L 227 198" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 240 208 L 236 200 L 231 206 Z"></path><path fill="none" stroke="currentColor" d=" M 208 192 L 224 192" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 224 176 L 227 176 L 227 208 L 224 208 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 211 192 A 3 3 0 1 1 210.99973922528991 191.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 243 176 A 3 3 0 1 1 242.99973922528991 175.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 243 208 A 3 3 0 1 1 242.99973922528991 207.96044522459943 Z"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add MOSFET (N-Channel)" style="font-size: 24px; color: rgb(51, 51, 51); padding: 5px 1px 1px; margin-right: 5px; cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><g transform="scale(1.0)"><defs></defs><g transform="translate(-68.92,-50.27) scale(0.324324)"><path fill="none" stroke="currentColor" d=" M 272 208 L 250 208" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 176 L 250 176" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 208 L 250 203" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 197 L 250 192" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 192 L 250 187" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 181 L 250 176" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 208 L 250 213" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 176 L 250 171" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 208 L 272 192" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 192 L 250 192" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 250 192 L 262 197 L 262 187 Z"></path><path fill="none" stroke="currentColor" d=" M 224 192 L 244 192" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 244 184 L 244 200" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 176 L 272 160" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 208 L 272 224" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 227 192 A 3 3 0 1 1 226.99973922528991 191.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 275 160 A 3 3 0 1 1 274.99973922528994 159.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 275 224 A 3 3 0 1 1 274.99973922528994 223.96044522459943 Z"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Inverter" style="font-size: 24px; color: rgb(51, 51, 51); padding: 5px 1px 1px; margin-right: 5px; cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><g transform="scale(1.0)"><g transform="translate(-288.41,-166.76) scale(0.413793)"><path fill="none" stroke="currentColor" d=" M 704 432 L 712 432" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 746 432 L 752 432" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 712 416 L 712 448 L 739 432 Z" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 744.94 432 A 2.94 2.94 0 1 1 744.9399985300001 431.99706000049" stroke-linecap="round" stroke-width="3"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add AND Gate" style="font-size: 24px; color: rgb(51, 51, 51); padding: 5px 1px 1px; margin-right: 5px; cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><g transform="scale(1.0)"><g transform="translate(-143.64,-130.55) scale(0.363636)"><path fill="none" stroke="currentColor" d=" M 400 400 L 414 400" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 400 384 L 414 384" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 442 392 L 456 392" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 414 378 L 428 378 A 14 14 0 0 1 428 406 L 414 406 Z" stroke-linecap="round" stroke-width="3"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" style="font-size: 16px; color: rgb(51, 51, 51); padding-right: 10px; white-space: nowrap;">Press and hold mouse to create circuit element</div></div></div><div style="position: absolute; overflow: hidden; inset: 30px 160px 0px 0px;"><canvas width="960" height="780" tabindex="0" style="width: 640px; height: 520px; position: absolute; inset: 0px; background-color: rgb(0, 0, 0);" class="cursorCross"></canvas></div></div></div></div><div aria-hidden="true" class="palette-container" style="display: none; position: absolute; z-index: 1000; background-color: rgb(255, 255, 255); border-width: 1px; border-color: rgb(204, 204, 204); border-style: solid; padding: 5px;"><div class="gwt-Label" title="Add Voltage Source (2-terminal)" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><defs></defs><g transform="scale(.8) translate(-122.00,-53.00) scale(0.500000)"><path fill="none" stroke="currentColor" d=" M 272 160 L 272 140" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 132 L 272 112" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 262 140 L 282 140" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 256 132 L 288 132" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 275 160 A 3 3 0 1 1 274.99973922528994 159.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 275 112 A 3 3 0 1 1 274.99973922528994 111.96044522459944 Z"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add A/C Voltage Source (2-terminal)" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><g transform="translate(-104.09,-66.93) scale(0.266667)"><path fill="none" stroke="currentColor" d=" M 432 336 L 432 313" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 432 279 L 432 256" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 448.66 296 A 16.66 16.66 0 1 1 448.6599916700007 295.98334000277663" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 422 296 L 423 294 L 424 292 L 425 290 L 426 289 L 427 289 L 428 289 L 429 290 L 430 292 L 431 294 L 432 296 L 433 298 L 434 300 L 435 302 L 436 303 L 437 303 L 438 303 L 439 302 L 440 300 L 441 298 L 442 296" stroke-linecap="round" stroke-width="3"></path></g>&lt;<g></g></g></svg></div></div><div aria-hidden="true" class="palette-container" style="display: none; position: absolute; z-index: 1000; background-color: rgb(255, 255, 255); border-width: 1px; border-color: rgb(204, 204, 204); border-style: solid; padding: 5px;"><div class="gwt-Label" title="Add Switch" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><defs></defs><g transform="translate(55.79,-100.42) scale(0.421053)"><path fill="none" stroke="currentColor" d=" M -128 272 L -120 272" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M -88 272 L -80 272" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M -120 272 L -88 256" stroke-linecap="round" stroke-width="3"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add SPDT Switch" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><g transform="translate(-242.27,-143.68) scale(0.324324)"><path fill="none" stroke="currentColor" d=" M 752 480 L 768 480" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 800 464 L 816 464" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 800 496 L 816 496" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 768 480 L 800 464" stroke-linecap="round" stroke-width="3"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Analog Switch (SPST)" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><g transform="translate(-242.27,-122.92) scale(0.324324)"><path fill="none" stroke="currentColor" d=" M 752 416 L 768 416" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 800 416 L 816 416" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 768 416 L 800 400" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 784 432 L 784 424" stroke-linecap="round" stroke-width="3"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Analog Switch (SPDT)" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><g transform="translate(-237.08,-146.27) scale(0.324324)"><path fill="none" stroke="currentColor" d=" M 736 480 L 752 480" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 784 496 L 800 496" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 784 464 L 800 464" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 752 480 L 784 464" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 768 496 L 768 512" stroke-linecap="round" stroke-width="3"></path></g>&lt;<g></g></g></svg></div></div><div aria-hidden="true" class="palette-container" style="display: none; position: absolute; z-index: 1000; background-color: rgb(255, 255, 255); border-width: 1px; border-color: rgb(204, 204, 204); border-style: solid; padding: 5px;"><div class="gwt-Label" title="Add Op Amp (ideal, - on top)" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><g transform="translate(-169.33,-86.13) scale(0.266667)"><path fill="none" stroke="currentColor" d=" M 640 352 L 654 352" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 640 384 L 654 384" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 706 368 L 720 368" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 654 336 L 654 400 L 706 368 Z" stroke-linecap="round" stroke-width="3"></path><g><text fill="currentColor" stroke="currentColor" font-family="sans-serif" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="664" y="350" text-anchor="middle" dominant-baseline="central">-</text></g><g><text fill="currentColor" stroke="currentColor" font-family="sans-serif" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="664" y="384" text-anchor="middle" dominant-baseline="central">+</text></g></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Op Amp (ideal, + on top)" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><g transform="translate(-169.33,-86.13) scale(0.266667)"><path fill="none" stroke="currentColor" d=" M 640 384 L 654 384" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 640 352 L 654 352" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 706 368 L 720 368" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 654 400 L 654 336 L 706 368 Z" stroke-linecap="round" stroke-width="3"></path><g><text fill="currentColor" stroke="currentColor" font-family="sans-serif" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="664" y="382" text-anchor="middle" dominant-baseline="central">-</text></g><g><text fill="currentColor" stroke="currentColor" font-family="sans-serif" font-size="14px" font-style="normal" font-weight="normal" text-decoration="normal" x="664" y="352" text-anchor="middle" dominant-baseline="central">+</text></g></g>&lt;<g></g></g></svg></div></div><div aria-hidden="true" class="palette-container" style="display: none; position: absolute; z-index: 1000; background-color: rgb(255, 255, 255); border-width: 1px; border-color: rgb(204, 204, 204); border-style: solid; padding: 5px;"><div class="gwt-Label" title="Add Transistor (bipolar, NPN)" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><defs></defs><g transform="translate(-107.73,-90.40) scale(0.533333)"><path fill="none" stroke="currentColor" d=" M 240 176 L 227 186" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 240 208 L 227 198" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 240 208 L 236 200 L 231 206 Z"></path><path fill="none" stroke="currentColor" d=" M 208 192 L 224 192" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 224 176 L 227 176 L 227 208 L 224 208 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 211 192 A 3 3 0 1 1 210.99973922528991 191.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 243 176 A 3 3 0 1 1 242.99973922528991 175.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 243 208 A 3 3 0 1 1 242.99973922528991 207.96044522459943 Z"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add Transistor (bipolar, PNP)" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><defs></defs><g transform="translate(-116.27,-90.40) scale(0.533333)"><path fill="none" stroke="currentColor" d=" M 256 208 L 243 198" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 256 176 L 243 186" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 245 187 L 253 184 L 248 178 Z"></path><path fill="none" stroke="currentColor" d=" M 224 192 L 240 192" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 240 176 L 243 176 L 243 208 L 240 208 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 227 192 A 3 3 0 1 1 226.99973922528991 191.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 259 208 A 3 3 0 1 1 258.99973922528994 207.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 259 176 A 3 3 0 1 1 258.99973922528994 175.96044522459943 Z"></path></g>&lt;<g></g></g></svg></div></div><div aria-hidden="true" class="palette-container" style="display: none; position: absolute; z-index: 1000; background-color: rgb(255, 255, 255); border-width: 1px; border-color: rgb(204, 204, 204); border-style: solid; padding: 5px;"><div class="gwt-Label" title="Add MOSFET (N-Channel)" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><defs></defs><g transform="translate(-68.92,-50.27) scale(0.324324)"><path fill="none" stroke="currentColor" d=" M 272 208 L 250 208" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 176 L 250 176" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 208 L 250 203" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 197 L 250 192" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 192 L 250 187" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 181 L 250 176" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 208 L 250 213" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 176 L 250 171" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 208 L 272 192" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 192 L 250 192" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 250 192 L 262 197 L 262 187 Z"></path><path fill="none" stroke="currentColor" d=" M 224 192 L 244 192" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 244 184 L 244 200" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 176 L 272 160" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 208 L 272 224" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 227 192 A 3 3 0 1 1 226.99973922528991 191.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 275 160 A 3 3 0 1 1 274.99973922528994 159.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 275 224 A 3 3 0 1 1 274.99973922528994 223.96044522459943 Z"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add MOSFET (P-Channel)" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><defs></defs><g transform="translate(-68.92,-50.27) scale(0.324324)"><path fill="none" stroke="currentColor" d=" M 272 176 L 272 160" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 208 L 272 224" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 208 L 250 208" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 176 L 250 176" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 208 L 250 203" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 197 L 250 192" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 192 L 250 187" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 181 L 250 176" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 208 L 250 213" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 250 176 L 250 171" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 176 L 272 192" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 272 192 L 250 192" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 272 192 L 260 187 L 260 197 Z"></path><path fill="none" stroke="currentColor" d=" M 224 192 L 244 192" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 244 184 L 244 200" stroke-linecap="round" stroke-width="3"></path><path fill="currentColor" stroke="currentColor" d=" M 275 160 A 3 3 0 1 1 274.99973922528994 159.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 275 224 A 3 3 0 1 1 274.99973922528994 223.96044522459943 Z"></path><path fill="currentColor" stroke="currentColor" d=" M 227 192 A 3 3 0 1 1 226.99973922528991 191.96044522459943 Z"></path></g>&lt;<g></g></g></svg></div></div><div aria-hidden="true" class="palette-container" style="display: none; position: absolute; z-index: 1000; background-color: rgb(255, 255, 255); border-width: 1px; border-color: rgb(204, 204, 204); border-style: solid; padding: 5px;"><div class="gwt-Label" title="Add AND Gate" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><g transform="translate(-143.64,-130.55) scale(0.363636)"><path fill="none" stroke="currentColor" d=" M 400 400 L 414 400" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 400 384 L 414 384" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 442 392 L 456 392" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 414 378 L 428 378 A 14 14 0 0 1 428 406 L 414 406 Z" stroke-linecap="round" stroke-width="3"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add NAND Gate" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><g transform="translate(-143.64,-142.18) scale(0.363636)"><path fill="none" stroke="currentColor" d=" M 400 432 L 414 432" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 400 416 L 414 416" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 450 424 L 456 424" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 414 410 L 428 410 A 14 14 0 0 1 428 438 L 414 438 Z" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 448.94 424 A 2.94 2.94 0 1 1 448.93999853000014 423.99706000049" stroke-linecap="round" stroke-width="3"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add OR Gate" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><g transform="translate(-143.64,-153.82) scale(0.363636)"><path fill="none" stroke="currentColor" d=" M 400 464 L 414 464" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 400 448 L 414 448" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 442 456 L 456 456" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 413 442 L 422 442 C 434 445 434 445 442 456 C 434 467 434 467 422 470 L 413 470 C 416 456 416 456 413 442 Z" stroke-linecap="round" stroke-width="3"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add NOR Gate" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><g transform="translate(-143.64,-165.45) scale(0.363636)"><path fill="none" stroke="currentColor" d=" M 400 496 L 414 496" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 400 480 L 414 480" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 450 488 L 456 488" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 413 474 L 422 474 C 434 477 434 477 442 488 C 434 499 434 499 422 502 L 413 502 C 416 488 416 488 413 474 Z" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 448.94 488 A 2.94 2.94 0 1 1 448.93999853000014 487.99706000049" stroke-linecap="round" stroke-width="3"></path></g>&lt;<g></g></g></svg></div><div class="gwt-Label" title="Add XOR Gate" style="color: rgb(51, 51, 51); cursor: pointer;"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><g transform="scale(1.6666666666666667)"><g transform="translate(-143.64,-180.00) scale(0.363636)"><path fill="none" stroke="currentColor" d=" M 400 536 L 414 536" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 400 520 L 414 520" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 442 528 L 456 528" stroke-linecap="round" stroke-width="3"></path><path fill="none" stroke="currentColor" d=" M 413 514 L 422 514 C 434 517 434 517 442 528 C 434 539 434 539 422 542 L 413 542 C 416 528 416 528 413 514 Z M 408 514 C 411 528 411 528 408 542" stroke-linecap="round" stroke-width="3"></path></g>&lt;<g></g></g></svg></div></div><div style="background: rgba(248, 248, 248, 0.85); position: absolute; padding: 4px 8px; border-bottom: 1px solid rgb(204, 204, 204); pointer-events: auto; box-sizing: border-box; white-space: nowrap; display: none; left: 0px; top: 30px; width: 640px;"><span class="gwt-InlineLabel" aria-hidden="true" style="font-size: 14px; color: rgb(51, 51, 51); padding-right: 10px; display: none;"></span><span class="gwt-InlineLabel" aria-hidden="true" style="font-size: 14px; color: rgb(51, 51, 51); padding-right: 10px; display: none;"></span><button type="button" class="gwt-Button" aria-hidden="true" style="margin-left: 5px; margin-right: 5px; display: none;">&#9664; Back</button><button type="button" class="gwt-Button" aria-hidden="true" style="margin-left: 5px; margin-right: 5px; display: none;">Save</button><button type="button" class="gwt-Button" aria-hidden="true" style="margin-left: 5px; margin-right: 5px; display: none;">Save Copy</button></div></body></html>
