@@ -1,1 +1,37 @@
+/*
+ * bsp_lcd.h
+ *
+ *  Created on: Jul 28, 2026
+ *      Author: SRSL
+ */
 
+#ifndef INC_BSP_LCD_H_
+#define INC_BSP_LCD_H_
+
+#include<stdint.h>
+
+
+/*
+  *set LCD RS register
+
+	  state 0 = select command register
+	  state 1 = select data register
+
+*/
+void BSP_LCD_SetRS(uint8_t state);
+
+/*Put 4-bit value on lcd*/
+void BSP_LCD_WriteNibble(uint8_t nibble);
+
+/*Generate an enable pulse for lcd*/
+void BSP_LCD_PulseEnable();
+
+
+/*Special micro second delay generation for lcd*/
+void BSP_LCD_DelayUs(uint8_t us);
+
+
+
+
+
+#endif /* INC_BSP_LCD_H_ */
