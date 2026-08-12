@@ -73,7 +73,7 @@ int main(void)
 
 `LCD_Init()` performs the full HD44780 software-reset sequence (three `0x03` nibbles → `0x02` → function set → clear → entry mode → display on) so it works reliably even on low-cost clone controllers that don't trust the internal power-on reset.
 
-![Initialization Sequence](docs/img/init_sequence.png)
+![Initialization Sequence](img/init_sequence.png)
 
 ---
 
@@ -86,7 +86,7 @@ A few details worth knowing before you extend this driver — pulled from the fu
 - **`RW` is tied permanently low** (write-only interface) to save a GPIO pin, at the cost of never polling the busy flag — timing is instead guaranteed with fixed, datasheet-derived delays.
 - All LCD I/O is layered *below* the charger's IEC 61851-1 state machine, never called from it directly — `LCD_Clear()` alone blocks for ~2ms, which is not something you want inside a safety-timing-critical control tick.
 
-![HD44780 Internal State](docs/img/hd44780_state.png)
+![HD44780 Internal State](img/hd44780_state.png)
 
 ---
 
