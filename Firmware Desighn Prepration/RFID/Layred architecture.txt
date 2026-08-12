@@ -1,0 +1,59 @@
+                 APPLICATION
+------------------------------------------------
+EV Charger Logic
+RFID Authorization
+Charging Control
+LCD
+UI
+
+                ↑
+
+              SERVICES
+------------------------------------------------
+RFID Service
+
+                ↑
+
+             PN5180 DRIVER
+------------------------------------------------
+ISO14443
+
+RF Configuration
+
+IRQ Management
+
+FIFO
+
+Register Access
+
+                ↑
+
+                  BSP
+------------------------------------------------
+GPIO
+
+SPI
+
+Delay
+
+Reset
+
+BUSY
+
+IRQ Pin
+
+                ↑
+
+             STM32 HAL
+
+                ↑
+
+             STM32 Hardware
+
+                ↑
+
+             PN5180 Chip
+
+                ↑
+
+             RFID Card

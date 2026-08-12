@@ -1,0 +1,51 @@
+Firmware/
+│
+├── App/
+│   ├── app_main.c
+│   ├── app_rfid.c
+│   ├── app_rfid.h
+│   ├── app_evse.c
+│   └── app_events.c
+│
+├── Services/
+│   ├── RFID/
+│   │   ├── rfid_service.c
+│   │   └── rfid_service.h
+│   │
+│   └── Authorization/
+│       ├── auth.c
+│       └── auth.h
+│
+├── Drivers/
+│   └── PN5180/
+│       ├── pn5180.c
+│       ├── pn5180.h
+│       ├── pn5180_rf.c
+│       ├── pn5180_rf.h
+│       ├── pn5180_fifo.c
+│       ├── pn5180_fifo.h
+│       ├── pn5180_irq.c
+│       ├── pn5180_irq.h
+│       ├── pn5180_iso14443a.c
+│       ├── pn5180_iso14443a.h
+│       ├── pn5180_reg.h
+│       ├── pn5180_cmd.h
+│       └── pn5180_types.h
+│
+├── BSP/
+│   └── PN5180/
+│       ├── bsp_pn5180.c
+│       └── bsp_pn5180.h
+│
+├── Common/
+│   ├── common_types.h
+│   ├── common_status.h
+│   ├── common_macros.h
+│   ├── common_assert.h
+│   └── common_utils.c
+│
+├── Config/
+│   ├── pn5180_config.h
+│   └── project_config.h
+│
+└── STM32Cube/***** IMPORTANT : Please unzip API Guide compressed folder and double click on index.html to view API Guide documentation. *****
