@@ -2,7 +2,7 @@
 
 A layered, portable HD44780 LCD driver written for an STM32F407VG-based EV charger (EVSE), supporting both 16x2 and 20x4 character displays over a 4-bit parallel interface.
 
-![Firmware Layering]
+![Firmware Layering]Basics/LCD/img/architecture_layers.png
 
 This isn't just a GPIO-bit-banging LCD library — it's built as a proper layered subsystem: the application never touches a GPIO pin, the driver never touches a GPIO port directly, and the whole thing can be retargeted to a different board revision by rewriting one small file.
 
