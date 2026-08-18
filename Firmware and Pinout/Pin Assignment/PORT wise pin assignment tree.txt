@@ -1,0 +1,40 @@
+STM32F407VG
+│
+├── PORT B
+│   ├── PB0 → CP ADC
+│   └── PB1 → Temperature ADC
+│
+├── PORT C
+│   ├── PC0 → R Voltage ADC
+│   ├── PC1 → Y Voltage ADC
+│   ├── PC2 → B Voltage ADC
+│   ├── PC3 → R Current ADC
+│   ├── PC4 → Y Current ADC
+│   └── PC5 → B Current ADC
+│
+├── PORT A
+│   ├── PA4 → RFID CS
+│   ├── PA5 → SPI1 SCK
+│   ├── PA6 → SPI1 MISO
+│   ├── PA7 → SPI1 MOSI
+│   ├── PA13 → SWDIO
+│   └── PA14 → SWCLK
+│
+├── PORT D
+│   ├── PD0 → LCD RS
+│   ├── PD1 → LCD EN
+│   ├── PD2 → LCD D4
+│   ├── PD3 → LCD D5
+│   ├── PD4 → LCD D6
+│   ├── PD5 → LCD D7
+│   ├── PD8 → USART3 TX
+│   ├── PD9 → USART3 RX
+│   └── PD10 → Buzzer
+│
+└── PORT E
+    ├── PE0 → RCM / EXTI0
+    ├── PE1 → Contactor 1 FB
+    ├── PE2 → Contactor 2 FB
+    ├── PE3 → Contactor 1 CTRL
+    ├── PE4 → Contactor 2 CTRL
+    └── PE9 → TIM1_CH1 CP PWM
